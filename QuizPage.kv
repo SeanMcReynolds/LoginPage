@@ -1,0 +1,65 @@
+<QuizManager>:
+    Question1Screen:
+        name: "question one"
+    Question2Screen:
+        name: "question two"
+    CorrectScreen:
+        name: "correct"
+    IncorrectScreen:
+        name: "incorrect"
+
+<Question1Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "What is 1 + 1?"
+            font_size: 100
+            size_hint: 1,2
+        Button:
+            text: "1"
+            on_release: root.answer_question(False)
+        Button:
+            text: "2"
+            on_release: root.answer_question(True)
+        Button:
+            text: "3"
+            on_release: root.answer_question(False)
+
+<CorrectScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Correct!"
+            color: 0.25,1,1,1
+            font_size: 100
+            size_hint: 1,2
+        Button:
+            text: ">> Advance >>"
+            font_size: 25
+            on_release: root.advance()
+
+<IncorrectScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Incorrect"
+            color: 1,0.25,0.25,1
+            font_size: 100
+            size_hint: 1,2
+        Button:
+            text: ">> Advance >>"
+            font_size:25
+            on_release: root.advance()
+
+<Question2Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "What is 2 + 2?"
+            font_size: 100
+            size_hint: 1,2
+        TextInput:
+            size_hint:0.5,0.25
+            pos_hint: {"center_x":0.5}
+        Button:
+            text: "Enter"
