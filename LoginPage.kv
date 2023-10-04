@@ -1,0 +1,44 @@
+<LoginManager>:
+    LoginScreen:
+        name: "login page"
+    NewUserScreen:
+        name: "new user"
+    WelcomeScreen:
+        name: "welcome"
+
+<LoginScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: ""
+            size_hint: 1,0.15
+        GridLayout:
+            size_hint: 0.75, 0.05
+            cols: 2
+            Label:
+                text: "Username: "
+                pos_hint: {"center_x":0.25}
+            TextInput:
+                id: user
+                size_hint: 0.5,0.15
+                pos_hint: {"center_x":0.5}
+            Label:
+                text: "Password: "
+                pos_hint: {"center_x":0.25}
+            TextInput:
+                id: pass
+                size_hint: 0.5,0.15
+                pos_hint: {"center_x":0.5}
+        Button:
+            text: "Create New User"
+            size_hint: 0.5,0.05
+            pos_hint: {"center_x":0.5}
+            background_color: 0,0,0,0
+        Button:
+            text: "Enter"
+            size_hint: 0.5,0.05
+            pos_hint: {"center_x":0.5}
+        Label:
+            id: wrong
+            text: ""
+            size_hint: 1,0.15
