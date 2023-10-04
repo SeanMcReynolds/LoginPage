@@ -20,7 +20,16 @@ class Question1Screen(Screen):
 
 
 class Question2Screen(Screen):
-    pass
+    def answer_question(self, text):
+        if text == "4":
+            self.manager.current = "correct"
+            #self.ids.test.text = "correct"
+            #self.ids.text.font_size = 50
+        elif text.lower() == "four":
+            self.manager.current = "correct"
+        else:
+            self.manager.current = "incorrect"
+
 
 class CorrectScreen(Screen):
     def advance(self):
