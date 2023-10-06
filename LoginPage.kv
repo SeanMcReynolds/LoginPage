@@ -34,11 +34,65 @@
             size_hint: 0.5,0.05
             pos_hint: {"center_x":0.5}
             background_color: 0,0,0,0
+            on_release: root.advance()
         Button:
             text: "Enter"
             size_hint: 0.5,0.05
             pos_hint: {"center_x":0.5}
+            on_release: root.user_input(user.text)
         Label:
             id: wrong
             text: ""
             size_hint: 1,0.15
+
+<NewUserScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            id: NotNewUser
+            text: ""
+            size_hint: 1,0.15
+        GridLayout:
+            size_hint: 0.75, 0.05
+            cols: 2
+            Label:
+                text: "Create New Username: "
+                pos_hint: {"center_x":0.25}
+            TextInput:
+                id: new_user
+                size_hint: 0.5,0.15
+                pos_hint: {"center_x":0.5}
+            Label:
+                text: "Create New Password: "
+                pos_hint: {"center_x":0.25}
+            TextInput:
+                id: new_pass
+                size_hint: 0.5,0.15
+                pos_hint: {"center_x":0.5}
+        Button:
+            text: "Enter"
+            size_hint: 0.5,0.05
+            pos_hint: {"center_x":0.5}
+            on_release: root.user_input(new_user.text)
+        Button:
+            text: "Back"
+            size_hint: 0.5,0.05
+            pos_hint: {"center_x":0.5}
+            on_release: root.advance()
+        Label:
+            text: "Password must include: One capital letter, one lowercase letter, one number, one special character."
+            size_hint: 1,0.15
+
+<WelcomeScreen>:
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text: "Welcome"
+            font_size: 100
+        Button:
+            text: "Log Out"
+            size_hint: 0.5,0.25
+            pos_hint: {"center_x":0.5}
+            on_release: root.advance()
+        Label:
+            text: ""

@@ -2,7 +2,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
-dict = {}
+users = {"SeanM066":"Sean070706"}
 
 Builder.load_file("LoginPage.kv")
 class LoginPageApp(App):
@@ -14,17 +14,29 @@ class LoginManager(ScreenManager):
 
 class LoginScreen(Screen):
     def user_input(self, text):
-        if text in dict:
+        if text in users:
             self.manager.current = "welcome"
         else:
             self.ids.wrong.text = "Username not found"
 
+    def advance(self):
+        self.manager.current = "new user"
+
 
 class NewUserScreen(Screen):
-    pass
+    def user_input(self, text):
+        if text in users:
+            self.ids.NotNewUser.text = "User already exists"
+        else:
+            users[self.ids.new_user.text] = [self.ids.new_pass.text]
+            self.manager.current = "login page"
+
+    def advance(self):
+        self.manager.current = "login page"
 
 class WelcomeScreen(Screen):
-    pass
+    def advance(self):
+        self.manager.current = "login page"
 
 LoginPageApp().run()
 
