@@ -74,13 +74,14 @@
             size_hint: 0.5,0.05
             pos_hint: {"center_x":0.5}
             on_release: root.user_input(new_user.text)
+            on_release: root.user_input(new_pass.text)
         Button:
             text: "Back"
             size_hint: 0.5,0.05
             pos_hint: {"center_x":0.5}
             on_release: root.advance()
         Label:
-            text: "Password must include: One capital letter, one lowercase letter, one number, one special character."
+            text: "Password must include: One capital letter, one lowercase letter, one number, one special character.(!@#$%^&*()?)"
             size_hint: 1,0.15
 
 <WelcomeScreen>:

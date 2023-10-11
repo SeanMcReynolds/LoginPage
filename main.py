@@ -24,12 +24,56 @@ class LoginScreen(Screen):
 
 
 class NewUserScreen(Screen):
+    def uppercase(self, text):
+        upper = "ABCDEFGHIJKLMNOPQESTUVWXYZ"
+        istrue = False
+        for letter in text:
+            if letter in upper:
+                istrue = True
+        return istrue
+    def lowercase(self, text):
+        lower = "abcdefghijklmnopqrstuvwxyz"
+        istrue = False
+        for letter in text:
+            if letter  in lower:
+                istrue = True
+        return istrue
+    def number(self, text):
+        num = "1234567890"
+        istrue = False
+        for letter in text:
+            if letter in num:
+                istrue = True
+        return istrue
+    def special_char(self, text):
+        special_char = "!@#$%^&*()?"
+        istrue = False
+        for letter in text:
+            if letter in special_char:
+                istrue = True
+        return istrue
+
     def user_input(self, text):
         if text in users:
             self.ids.NotNewUser.text = "User already exists"
-        else:
+        elif text == "":
+            self.ids.NotNewUser.text = "Please enter a username and password"
+        elif self.uppercase(text) and self.lowercase(text) and self.number(text) and self.special_char(text) == True:
             users[self.ids.new_user.text] = [self.ids.new_pass.text]
             self.manager.current = "login page"
+        else:
+            self.ids.NotNewUser.text = "Password does not follow parameters."
+        # else:
+        #     users[self.ids.new_user.text] = [self.ids.new_pass.text]
+        #     self.manager.current = "login page"
+
+    # def good_pass(self, username, password):
+        # for text in self.ids.new_pass.text:
+        # if self.uppercase(password) and self.lowercase(password) and self.number(password) and self.special_char(password) == True:
+        #     users[self.ids.new_user.text] = [self.ids.new_pass.text]
+        #     self.manager.current = "login page"
+        # else:
+        #     self.NotNewUser.text = "Password does not follow parameters."
 
     def advance(self):
         self.manager.current = "login page"
